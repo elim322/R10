@@ -13,23 +13,16 @@ const Schedule = ({ data }) => {
   return (
     <View style={styles.container}>
       <StatusBar barStyle="light-content" />
-      <SectionList
-        renderItem={({ item, index, section }) => (
-          <Text key={index}>{item}</Text>
+      <Text>{data.allSessions}</Text>
+      {/* <SectionList
+        renderItem={({ item, index }) => <Text item={item} index={index} />}
+        renderSectionHeader={({ section: { item } }) => (
+          <Text style={styles.header}>{item}</Text>
         )}
-        renderSectionHeader={({ section: { title } }) => (
-          <View style={styles.header}>
-            <Text>{title}</Text>
-          </View>
-        )}
-        sections={[
-          { title: "9:00am", data: ["item1", "item2"] },
-          { title: "10:00am", data: ["item3", "item4"] },
-          { title: "11:00am", data: ["item5", "item6"] }
-        ]}
-        keyExtractor={(item, index) => item + index}
-      />
-      <Ionicons name="ios-heart" size={"horizontal" ? 20 : 25} color="red" />
+        sections={data.allSessions}
+        keyExtractor={(item, index) => item.title}
+      /> */}
+      {/* <Ionicons name="ios-heart" size={"horizontal" ? 20 : 25} color="red" /> */}
     </View>
   );
 };
