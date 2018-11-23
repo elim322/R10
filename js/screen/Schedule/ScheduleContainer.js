@@ -26,7 +26,7 @@ class ScheduleContainer extends Component {
           if (loading) return <ActivityIndicator />;
           if (error) return `${error}`;
           if (data) {
-            return <Schedule data={formatSessionData(data.allSessions)} />;
+            return <Schedule sessions={formatSessionData(data.allSessions)} />;
           }
         }}
       </Query>

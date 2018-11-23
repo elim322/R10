@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import {
   View,
@@ -9,20 +9,21 @@ import {
   Platform
 } from "react-native";
 
-const Schedule = ({ data }) => {
+const Schedule = ({ sessions }) => {
+  console.log(sessions);
   return (
     <View style={styles.container}>
       <StatusBar barStyle="light-content" />
-      <Text>{data.allSessions}</Text>
-      {/* <SectionList
+
+      <SectionList
         renderItem={({ item, index }) => <Text item={item} index={index} />}
-        renderSectionHeader={({ section: { item } }) => (
-          <Text style={styles.header}>{item}</Text>
+        renderSectionHeader={({ section }) => (
+          <Text style={styles.header}>{sessions.title}</Text>
         )}
-        sections={data.allSessions}
+        sections={sessions}
         keyExtractor={(item, index) => item.title}
-      /> */}
-      {/* <Ionicons name="ios-heart" size={"horizontal" ? 20 : 25} color="red" /> */}
+      />
+      <Ionicons name="ios-heart" size={"horizontal" ? 20 : 25} color="red" />
     </View>
   );
 };
