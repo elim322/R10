@@ -9,7 +9,6 @@ import {
   Platform
 } from "react-native";
 import moment from "moment";
-import styles from "./styles";
 
 const Schedule = ({ sessions }) => {
   console.log(sessions);
@@ -18,14 +17,18 @@ const Schedule = ({ sessions }) => {
       <StatusBar barStyle="light-content" />
       <SectionList
         renderItem={({ item }) => (
-          <View>
-            <Text>{item.title}</Text>
-            <Text>{item.location}</Text>
-            <Ionicons
-              name="ios-heart"
-              size={"horizontal" ? 20 : 25}
-              color="red"
-            />
+          <View style={styles.separator}>
+            <View style={styles.content}>
+              <Text style={styles.title}>{item.title}</Text>
+              <Text style={styles.location}>
+                {item.location}
+                <Ionicons
+                  name="ios-heart"
+                  size={"horizontal" ? 20 : 25}
+                  color="red"
+                />
+              </Text>
+            </View>
           </View>
         )}
         renderSectionHeader={({ section }) => (
@@ -49,6 +52,26 @@ const styles = StyleSheet.create({
   },
   header: {
     fontWeight: "bold",
-    backgroundColor: "#e6e6e6"
+    backgroundColor: "#e6e6e6",
+    height: 25,
+    paddingTop: 5,
+    paddingLeft: 5
+  },
+  content: {
+    paddingTop: 5,
+    paddingBottom: 5
+  },
+  separator: {
+    borderWidth: 0.5,
+    borderColor: "#e6e6e6"
+  },
+  title: {
+    paddingLeft: 5,
+    fontWeight: "400",
+    fontSize: 16
+  },
+  location: {
+    paddingLeft: 5,
+    color: "#999999"
   }
 });
