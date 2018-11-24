@@ -5,7 +5,7 @@ import { Query } from "react-apollo";
 import { ActivityIndicator } from "react-native";
 import { formatSessionData } from "../../lib/dataFormatHelpers";
 
-const ALL_SESSIONS = gql`
+const GET_SCHEDULE = gql`
   query allSessions {
     allSessions {
       startTime
@@ -21,7 +21,7 @@ class ScheduleContainer extends Component {
   };
   render() {
     return (
-      <Query query={ALL_SESSIONS}>
+      <Query query={GET_SCHEDULE}>
         {({ loading, error, data }) => {
           if (loading) return <ActivityIndicator />;
           if (error) return `${error}`;
