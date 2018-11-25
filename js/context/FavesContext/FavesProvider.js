@@ -35,7 +35,7 @@ class FavesProvider extends Component {
     });
   }
 
-  deleteFaves(id) {
+  deleteFave(id) {
     realm.write(() => {
       realm.delete("Faves", { id: id }).then(() => {
         let favs = realm.objects("Faves");
@@ -49,9 +49,9 @@ class FavesProvider extends Component {
       <FavesContext.Provider
         value={{
           ...this.state,
-          allFaves: this.allFaves,
-          removeFave: this.removeFave,
-          addFave: this.addFave
+          queryAllFaves: this.queryAllFaves,
+          deleteFave: this.deleteFave,
+          createFave: this.createFave
         }}
       >
         {this.props.children}
