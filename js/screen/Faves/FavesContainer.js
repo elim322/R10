@@ -5,9 +5,10 @@ import { Query } from "react-apollo";
 import FavesContext from "../../context/FavesContext/FavesProvider";
 import { ActivityIndicator } from "react-native";
 import { Text } from "react-native";
+import { formatSessionData } from "../../lib/dataFormatHelpers";
 
 const GET_FAVES = gql`
-  query($filter: SessionFilter) {
+  query getFiltered($filter: SessionFilter) {
     allSessions(filter: $filter) {
       id
       title
@@ -35,8 +36,9 @@ class FavesContainer extends Component {
           <Query query={GET_FAVES} variables={{ filter: { id_in: faveIds } }}>
             {({ loading, error, data }) => {
               if (loading) return <ActivityIndicator />;
-              if (error) return <Text>error</Text>;
+              if (error) return <Text>{`${error}`}</Text>;
               if (data) {
+                console.log(faveIds);
                 return (
                   <Faves
                     faves={formatSessionData(data.allSessions)}

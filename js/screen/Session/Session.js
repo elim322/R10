@@ -1,20 +1,11 @@
 import React from "react";
 import Ionicons from "react-native-vector-icons/Ionicons";
-import {
-  View,
-  Text,
-  Button,
-  Image,
-  StyleSheet,
-  SectionList,
-  StatusBar,
-  Platform
-} from "react-native";
+import { View, Text, Button, Image } from "react-native";
 import moment from "moment";
 import styles from "./styles";
 import FavesContext from "../../context/FavesContext/FavesProvider";
 
-const Session = ({ data }) => {
+const Session = ({ data, createFave, deleteFave, faveIds }) => {
   return (
     <View>
       <Text>
@@ -29,27 +20,21 @@ const Session = ({ data }) => {
         <Image source={{ uri: data.speaker.image }} />
         {data.speaker.name}
       </Text>
-      <FavesContext.Consumer>
-        {({ createFave, deleteFave }) => (
-          <React.Fragment>
-            <Button
-              onPress={() => {
-                console.log(data.id);
-                createFave(data.id);
-              }}
-              style={styles.button}
-              title="Add to Faves"
-            />
-            <Button
-              onPress={() => {
-                deleteFave(data.id);
-              }}
-              style={styles.button}
-              title="Remove from Faves"
-            />
-          </React.Fragment>
-        )}
-      </FavesContext.Consumer>
+
+      <Button
+        onPress={() => {
+          createFave(data.id);
+        }}
+        style={styles.button}
+        title="Add to Faves"
+      />
+      <Button
+        onPress={() => {
+          deleteFave(data.id);
+        }}
+        style={styles.button}
+        title="Remove from Faves"
+      />
     </View>
   );
 };

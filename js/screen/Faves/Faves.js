@@ -1,8 +1,16 @@
 import React from "react";
-import { View, Text, SectionList } from "react-native";
+import Ionicons from "react-native-vector-icons/Ionicons";
+import {
+  View,
+  Text,
+  SectionList,
+  StatusBar,
+  TouchableHighlight
+} from "react-native";
 import styles from "../Schedule/styles";
+import moment from "moment";
 
-const Faves = ({ faves }) => {
+const Faves = ({ faves, faveIds }) => {
   return (
     <View style={styles.container}>
       <StatusBar barStyle="light-content" />

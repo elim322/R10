@@ -4,7 +4,7 @@ const Faves = {
   name: "Faves",
   primaryKey: "id",
   properties: {
-    id: "int",
+    id: "string",
     faved_on: "date"
   }
 };
