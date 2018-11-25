@@ -12,6 +12,7 @@ import {
 } from "react-native";
 import moment from "moment";
 import styles from "./styles";
+import FavesContext from "../../context/FavesContext/FavesProvider";
 
 const Session = ({ data }) => {
   return (
@@ -25,10 +26,30 @@ const Session = ({ data }) => {
       <Text>{data.description}</Text>
       <Text>Presented By:</Text>
       <Text>
-        <Image height={50} width={50} source={data.speaker.image} />
+        <Image source={{ uri: data.speaker.image }} />
         {data.speaker.name}
       </Text>
-      <Button title="Remove from Faves" />
+      <FavesContext.Consumer>
+        {({ createFave, deleteFave }) => (
+          <React.Fragment>
+            <Button
+              onPress={() => {
+                console.log(data.id);
+                createFave(data.id);
+              }}
+              style={styles.button}
+              title="Add to Faves"
+            />
+            <Button
+              onPress={() => {
+                deleteFave(data.id);
+              }}
+              style={styles.button}
+              title="Remove from Faves"
+            />
+          </React.Fragment>
+        )}
+      </FavesContext.Consumer>
     </View>
   );
 };
