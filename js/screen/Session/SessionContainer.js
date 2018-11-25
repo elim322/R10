@@ -1,20 +1,22 @@
 import React, { Component } from "react";
-import Schedule from "./Schedule";
+import Session from "./Session";
 import gql from "graphql-tag";
 import { Query } from "react-apollo";
-import { ActivityIndicator } from "react-native";
+import { ActivityIndicator, Text } from "react-native";
 import { formatSessionData } from "../../lib/dataFormatHelpers";
 
-const ALL_SESSIONS = gql`
-  query allSessions {
-    allSessions {
+const ONE_SESSION = gql`
+  query Session($id: ID!) {
+    Session(id: $id) {
       startTime
       location
       title
       description
+      id
       speaker {
         name
         image
+        id
       }
     }
   }
@@ -24,13 +26,17 @@ class SessionContainer extends Component {
     title: "Session"
   };
   render() {
+    console.log(this.props.navigation.getParam("id"));
     return (
-      <Query query={ALL_SESSIONS}>
+      <Query
+        query={ONE_SESSION}
+        variables={{ id: this.props.navigation.getParam("id") }}
+      >
         {({ loading, error, data }) => {
           if (loading) return <ActivityIndicator />;
-          if (error) return `${error}`;
+          if (error) return <Text>error</Text>;
           if (data) {
-            return <Schedule sessions={formatSessionData(data.allSessions)} />;
+            return <Session data={data.Session} />;
           }
         }}
       </Query>
