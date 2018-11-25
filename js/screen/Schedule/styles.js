@@ -29,3 +29,5 @@ const styles = StyleSheet.create({
     color: "#999999"
   }
 });
+
+export default styles;
