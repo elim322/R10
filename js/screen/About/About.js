@@ -1,5 +1,6 @@
 import React from "react";
 import { View, Text, StyleSheet, Image, FlatList } from "react-native";
+import styles from "./styles";
 
 const About = ({ data }) => {
   return (
@@ -16,8 +17,6 @@ const About = ({ data }) => {
         Vancouver BC.
       </Text>
       <Text style={styles.title}>Code of Conduct</Text>
-
-      {/* FlatList tutorial https://www.youtube.com/watch?v=r-ENJLGrd3s */}
       <FlatList
         data={data.allConducts}
         renderItem={({ item }) => (
@@ -33,24 +32,3 @@ const About = ({ data }) => {
 };
 
 export default About;
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1
-  },
-  logo: {
-    marginTop: 20,
-    marginBottom: 20,
-    maxHeight: "10%",
-    alignItems: "center"
-  },
-  title: {
-    fontSize: 30,
-    marginTop: 10,
-    marginBottom: 10,
-    fontWeight: "bold"
-  },
-  body: {
-    fontSize: 20
-  }
-});

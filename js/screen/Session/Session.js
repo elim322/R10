@@ -11,6 +11,7 @@ import {
   Platform
 } from "react-native";
 import moment from "moment";
+import styles from "./styles";
 
 const Session = ({ data }) => {
   return (

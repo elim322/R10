@@ -9,6 +9,7 @@ import {
   Platform,
   TouchableHighlight
 } from "react-native";
+import styles from "./styles";
 import moment from "moment";
 
 const Schedule = ({ sessions, navigation, faveIds }) => {

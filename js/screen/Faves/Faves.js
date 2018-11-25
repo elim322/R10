@@ -1,6 +1,7 @@
 import React from "react";
 import { View, Text, StyleSheet, SectionList } from "react-native";
 import { FavesContext } from "../../context/FavesContext/FavesProvider";
+import styles from "./styles";
 
 const Faves = ({ faves }) => {
   return (
@@ -32,10 +33,3 @@ const Faves = ({ faves }) => {
 };
 
 export default Faves;
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "center"
-  }
-});

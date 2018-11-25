@@ -1,5 +1,6 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
+import styles from "./styles";
 
 const Map = () => {
   return (
@@ -10,10 +11,3 @@ const Map = () => {
 };
 
 export default Map;
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "center"
-  }
-});
