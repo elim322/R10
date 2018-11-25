@@ -11,6 +11,7 @@ const GET_SCHEDULE = gql`
       startTime
       title
       location
+      id
     }
   }
 `;
@@ -26,7 +27,12 @@ class ScheduleContainer extends Component {
           if (loading) return <ActivityIndicator />;
           if (error) return `${error}`;
           if (data) {
-            return <Schedule sessions={formatSessionData(data.allSessions)} />;
+            return (
+              <Schedule
+                sessions={formatSessionData(data.allSessions)}
+                navigation={this.props.navigation}
+              />
+            );
           }
         }}
       </Query>
