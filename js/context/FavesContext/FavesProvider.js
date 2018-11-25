@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import realm, {
-  createFaves,
+  createFave,
   deleteFaves,
   queryAllFaves
 } from "../../config/models";
@@ -21,14 +21,43 @@ class FavesProvider extends Component {
     this.getFavedSessionsIds();
   }
 
+  createFave(id) {
+    realm.write(() => {
+      const favedOn = new Date();
+      realm.create("Faves", { id, favedOn });
+    });
+  }
+
+  queryAllFaves() {
+    realm.write(() => {
+      let favs = realm.objects("Faves");
+      this.setState({ faveIds: favs });
+    });
+  }
+
+  deleteFaves(id) {
+    realm.write(() => {
+      realm.delete("Faves", { id: id }).then(() => {
+        let favs = realm.objects("Faves");
+        this.setState({ faveIds: favs });
+      });
+    });
+  }
+
   render() {
     return (
-      <FavesContext.Provider value={{ ...this.state }}>
+      <FavesContext.Provider
+        value={{
+          ...this.state,
+          allFaves: this.allFaves,
+          removeFave: this.removeFave,
+          addFave: this.addFave
+        }}
+      >
         {this.props.children}
       </FavesContext.Provider>
     );
   }
-  // more code will go here!
 }
 export { FavesProvider };
 export default FavesContext;
