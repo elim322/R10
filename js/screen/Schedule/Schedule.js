@@ -3,20 +3,17 @@ import Ionicons from "react-native-vector-icons/Ionicons";
 import {
   View,
   Text,
-  StyleSheet,
   SectionList,
   StatusBar,
-  Platform,
   TouchableHighlight
 } from "react-native";
 import styles from "./styles";
 import moment from "moment";
 
-const Schedule = ({ sessions, navigation, faveIds }) => {
+const Schedule = ({ sessions, navigation }) => {
   return (
     <View style={styles.container}>
       <StatusBar barStyle="light-content" />
-      {console.log(faveIds)}
       <SectionList
         renderItem={({ item }) => (
           <TouchableHighlight

@@ -26,7 +26,6 @@ class SessionContainer extends Component {
     title: "Session"
   };
   render() {
-    console.log(this.props.navigation.getParam("id"));
     return (
       <Query
         query={ONE_SESSION}

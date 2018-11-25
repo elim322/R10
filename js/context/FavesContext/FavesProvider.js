@@ -1,9 +1,5 @@
 import React, { Component } from "react";
-import realm, {
-  createFave,
-  deleteFaves,
-  queryAllFaves
-} from "../../config/models";
+import realm from "../../config/models";
 const FavesContext = React.createContext();
 class FavesProvider extends Component {
   constructor(props) {
