@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text, StyleSheet, SectionList } from "react-native";
 import { FavesContext } from "../../context/FavesContext/FavesProvider";
 
-const Faves = ({ sessions }) => {
+const Faves = ({ faves }) => {
   return (
     <View style={styles.container}>
       <SectionList
@@ -12,11 +12,9 @@ const Faves = ({ sessions }) => {
               <Text style={styles.title}>{item.title}</Text>
               <Text style={styles.location}>
                 {item.location}
-                <Ionicons
-                  name="ios-heart"
-                  size={"horizontal" ? 20 : 25}
-                  color="red"
-                />
+                {props.faveIds.find(fave => fave === item.id) && (
+                  <Ionicon name={"ios-heart"} color={globalStyles.red.color} />
+                )}
               </Text>
             </View>
           </View>
@@ -26,7 +24,7 @@ const Faves = ({ sessions }) => {
             {moment(section.title).format("LT")}
           </Text>
         )}
-        sections={sessions}
+        sections={faves}
         keyExtractor={(item, index) => item + index}
       />
     </View>
