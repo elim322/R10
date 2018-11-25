@@ -1,21 +1,32 @@
 import React from "react";
 import { View, Text, StyleSheet, SectionList } from "react-native";
+import { FavesContext } from "../../context/FavesContext/FavesProvider";
 
-const Faves = () => {
+const Faves = ({ sessions }) => {
   return (
     <View style={styles.container}>
       <SectionList
-        renderItem={({ item, index, section }) => (
-          <Text key={index}>{item}</Text>
+        renderItem={({ item }) => (
+          <View style={styles.separator}>
+            <View style={styles.content}>
+              <Text style={styles.title}>{item.title}</Text>
+              <Text style={styles.location}>
+                {item.location}
+                <Ionicons
+                  name="ios-heart"
+                  size={"horizontal" ? 20 : 25}
+                  color="red"
+                />
+              </Text>
+            </View>
+          </View>
         )}
-        renderSectionHeader={({ section: { title } }) => (
-          <Text style={styles.header}>{title}</Text>
+        renderSectionHeader={({ section }) => (
+          <Text style={styles.header}>
+            {moment(section.title).format("LT")}
+          </Text>
         )}
-        sections={[
-          { title: "9:00am", data: ["item1", "item2"] },
-          { title: "10:00am", data: ["item3", "item4"] },
-          { title: "11:00am", data: ["item5", "item6"] }
-        ]}
+        sections={sessions}
         keyExtractor={(item, index) => item + index}
       />
     </View>

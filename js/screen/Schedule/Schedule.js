@@ -11,7 +11,6 @@ import {
 import moment from "moment";
 
 const Schedule = ({ sessions }) => {
-  console.log(sessions);
   return (
     <View style={styles.container}>
       <StatusBar barStyle="light-content" />

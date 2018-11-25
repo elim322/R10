@@ -2,8 +2,9 @@ import React, { Component } from "react";
 import Faves from "./Faves";
 import gql from "graphql-tag";
 import { Query } from "react-apollo";
-import { FavesContext } from "../../context/FavesContext/FavesProvider";
+import FavesContext from "../../context/FavesContext/FavesProvider";
 import { ActivityIndicator } from "react-native";
+import { Text } from "react-native";
 
 const GET_FAVES = gql`
   query($filter: SessionFilter) {
@@ -13,7 +14,11 @@ const GET_FAVES = gql`
       startTime
       location
       speaker {
+        id
         name
+        bio
+        image
+        url
       }
     }
   }
@@ -30,9 +35,14 @@ class FavesContainer extends Component {
           <Query query={GET_FAVES} variables={{ filter: { id_in: faveIds } }}>
             {({ loading, error, data }) => {
               if (loading) return <ActivityIndicator />;
-              if (error) return `${error}`;
+              if (error) return <Text>error</Text>;
               if (data) {
-                return <Faves sessions={formatSessionData(data.allSessions)} />;
+                return (
+                  <Faves
+                    faves={formatSessionData(data.allSessions)}
+                    faveIds={faveIds}
+                  />
+                );
               }
             }}
           </Query>
