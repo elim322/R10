@@ -38,7 +38,6 @@ class FavesContainer extends Component {
               if (loading) return <ActivityIndicator />;
               if (error) return <Text>{`${error}`}</Text>;
               if (data) {
-                console.log(faveIds);
                 return (
                   <Faves
                     faves={formatSessionData(data.allSessions)}

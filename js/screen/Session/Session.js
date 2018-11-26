@@ -138,5 +138,15 @@ class Session extends Component {
   }
 }
 
-Session.propTypes = {};
+Session.propTypes = {
+  id: PropTypes.string.isRequired,
+  description: PropTypes.string,
+  location: PropTypes.string.isRequired,
+  startTime: PropTypes.string.isRequired,
+  title: PropTypes.string,
+  url: PropTypes.string,
+  name: PropTypes.string.isRequired,
+  image: PropTypes.string,
+  bio: PropTypes.string
+};
 export default Session;

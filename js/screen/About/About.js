@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, Image, FlatList } from "react-native";
+import { View, Text, Image } from "react-native";
 import styles from "./styles";
 import { ScrollView } from "react-native-gesture-handler";
 import ConductAnimation from "../../components/ConductAnimation/ConductAnimation";
@@ -29,6 +29,12 @@ const About = ({ data }) => {
       </ScrollView>
     </View>
   );
+};
+
+About.propTypes = {
+  id: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired
 };
 
 export default About;
