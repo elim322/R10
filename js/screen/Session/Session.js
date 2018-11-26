@@ -3,7 +3,6 @@ import Ionicons from "react-native-vector-icons/Ionicons";
 import {
   View,
   Text,
-  Button,
   Image,
   TouchableHighlight,
   Modal,
@@ -155,13 +154,8 @@ class Session extends Component {
 }
 
 Session.propTypes = {
-  id: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
-  location: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  url: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  image: PropTypes.string.isRequired,
-  bio: PropTypes.string.isRequired
+  data: PropTypes.string.isRequired,
+  methods: PropTypes.object.isRequired,
+  faveIds: PropTypes.id.isRequired
 };
 export default Session;
