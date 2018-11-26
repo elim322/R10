@@ -2,8 +2,7 @@ import React, { Component } from "react";
 import Session from "./Session";
 import gql from "graphql-tag";
 import { Query } from "react-apollo";
-import { ActivityIndicator, Text } from "react-native";
-import { formatSessionData } from "../../lib/dataFormatHelpers";
+import { ActivityIndicator } from "react-native";
 import FavesContext from "../../context/FavesContext/FavesProvider";
 
 const ONE_SESSION = gql`
@@ -36,7 +35,7 @@ class SessionContainer extends Component {
       >
         {({ loading, error, data }) => {
           if (loading) return <ActivityIndicator />;
-          if (error) return <Text>error</Text>;
+          if (error) return `${error}`;
           if (data) {
             return (
               <FavesContext.Consumer>

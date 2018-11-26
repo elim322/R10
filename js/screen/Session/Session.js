@@ -8,7 +8,6 @@ import {
   TouchableHighlight,
   Modal
 } from "react-native";
-import FavesContext from "../../context/FavesContext/FavesProvider";
 import moment from "moment";
 import styles from "./styles";
 
@@ -47,30 +46,29 @@ class Session extends Component {
           activeOpacity={0.7}
         >
           <Text>
-            <Image source={{ uri: this.props.data.speaker.image }} />
+            <Image
+              style={{ height: 50, width: 50 }}
+              source={{ uri: this.props.data.speaker.image }}
+            />
             {this.props.data.speaker.name}
           </Text>
         </TouchableHighlight>
-        <FavesContext.Consumer>
-          {({ createFave, deleteFave }) => {
-            <React.Fragment>
-              <Button
-                onPress={() => {
-                  createFave(this.props.data.id);
-                }}
-                style={styles.button}
-                title="Add to Faves"
-              />
-              <Button
-                onPress={() => {
-                  deleteFave(this.props.data.id);
-                }}
-                style={styles.button}
-                title="Remove from Faves"
-              />
-            </React.Fragment>;
-          }}
-        </FavesContext.Consumer>
+        <View>
+          <Button
+            onPress={() => {
+              this.props.createFave(this.props.data.id);
+            }}
+            style={styles.button}
+            title="add fave"
+          />
+          <Button
+            onPress={() => {
+              this.props.deleteFave(this.props.data.id);
+            }}
+            style={styles.button}
+            title="remove fave"
+          />
+        </View>
         <View style={{ marginTop: 22 }}>
           <Modal
             animationType="slide"

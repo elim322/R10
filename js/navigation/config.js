@@ -26,12 +26,15 @@ export const sharedNavigationOptions = navigation => ({
   headerBackTitle: null,
   header: props => <GradientHeader {...props} />,
   headerLeft: () => {
-    if (Platform.OS === "android")
+    if (Platform.OS === "android") {
       return (
         <TouchableHighlight onPress={() => navigation.toggleDrawer()}>
           <Ionicons color="white" name="md-menu" size={20} />
         </TouchableHighlight>
       );
+    } else {
+      return <Text />;
+    }
   },
   headerStyle: {
     backgroundColor: "transparent"
