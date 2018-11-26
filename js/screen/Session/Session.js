@@ -8,7 +8,8 @@ import {
   TouchableHighlight,
   Modal,
   TouchableOpacity,
-  Platform
+  Platform,
+  Linking
 } from "react-native";
 import moment from "moment";
 import styles from "./styles";
@@ -113,22 +114,37 @@ class Session extends Component {
               Alert.alert("Modal has been closed.");
             }}
           >
-            <TouchableHighlight
-              onPress={() => this.setState({ modalVisible: false })}
+            <TouchableOpacity
+              onPress={() => this.setModalVisible(!this.state.modalVisible)}
             >
               <Ionicons
                 style={styles.modalIcon}
                 color={"#fff"}
                 name={modalIconName}
               />
-            </TouchableHighlight>
+            </TouchableOpacity>
             <Text style={styles.modalTitle}>About the Speaker</Text>
             <View style={styles.modalContent}>
               <View>
                 <Image source={{ uri: this.props.data.speaker.image }} />
                 <Text>{this.props.data.speaker.name}</Text>
                 <Text>{this.props.data.speaker.bio}</Text>
-                <Button title="Read more on Wikipedia" />
+                <TouchableOpacity
+                  onPress={() => {
+                    Linking.openURL(this.props.data.speaker.url);
+                  }}
+                >
+                  <LinearGradient
+                    colors={["#9963ea", "#8797D6"]}
+                    start={{ x: 0.0, y: 0.0 }}
+                    end={{ x: 1.0, y: 1.0 }}
+                    style={styles.button}
+                  >
+                    <Text style={styles.buttonTitle}>
+                      Read More on Wikipedia
+                    </Text>
+                  </LinearGradient>
+                </TouchableOpacity>
               </View>
             </View>
           </Modal>
@@ -142,7 +158,6 @@ Session.propTypes = {
   id: PropTypes.string.isRequired,
   description: PropTypes.string,
   location: PropTypes.string.isRequired,
-  startTime: PropTypes.string.isRequired,
   title: PropTypes.string,
   url: PropTypes.string,
   name: PropTypes.string.isRequired,

@@ -78,7 +78,7 @@ export default createDrawerNavigator(
         }
         return (
           <View>
-            <Ionicons name={iconName} size={20} color={tintColor} />
+            <Ionicons name={iconName} size={25} color={tintColor} />
             <Text>{routeName}</Text>
           </View>
         );
