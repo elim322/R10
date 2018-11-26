@@ -5,7 +5,7 @@ import moment from "moment";
 import styles from "./styles";
 import FavesContext from "../../context/FavesContext/FavesProvider";
 
-const Session = ({ data, createFave, deleteFave, faveIds }) => {
+const Session = ({ data, createFave, deleteFave, faveIds, navigation }) => {
   return (
     <View>
       <Text>
@@ -16,10 +16,18 @@ const Session = ({ data, createFave, deleteFave, faveIds }) => {
       <Text>{moment(data.startTime).format("LT")}</Text>
       <Text>{data.description}</Text>
       <Text>Presented By:</Text>
-      <Text>
-        <Image source={{ uri: data.speaker.image }} />
-        {data.speaker.name}
-      </Text>
+      <TouchableHighlight
+        onPress={() => {
+          navigation.navigate("Speaker", { id: item.id });
+        }}
+        underlayColor="#e6e6e6"
+        activeOpacity={0.7}
+      >
+        <Text>
+          <Image source={{ uri: data.speaker.image }} />
+          {data.speaker.name}
+        </Text>
+      </TouchableHighlight>
 
       <Button
         onPress={() => {
