@@ -46,6 +46,12 @@ class FavesProvider extends Component {
       });
     });
   }
+  deleteFave(id) {
+    realm.write(() => {
+      const deleteId = realm.objects("Faves").filtered(`id ==$0`, id);
+      realm.delete(deleteId);
+    });
+  }
 
   render() {
     return (

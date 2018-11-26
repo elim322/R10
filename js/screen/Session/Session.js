@@ -6,7 +6,8 @@ import {
   Button,
   Image,
   TouchableHighlight,
-  Modal
+  Modal,
+  TouchableOpacity
 } from "react-native";
 import moment from "moment";
 import styles from "./styles";
@@ -54,20 +55,23 @@ class Session extends Component {
           </Text>
         </TouchableHighlight>
         <View>
-          <Button
-            onPress={() => {
-              this.props.createFave(this.props.data.id);
-            }}
-            style={styles.button}
-            title="add fave"
-          />
-          <Button
-            onPress={() => {
-              this.props.deleteFave(this.props.data.id);
-            }}
-            style={styles.button}
-            title="remove fave"
-          />
+          {this.props.faveIds.includes(this.props.data.id) ? (
+            <TouchableOpacity
+              onPress={() => {
+                this.props.deleteFave(this.props.data.id);
+              }}
+            >
+              <Text style={styles.button}>Remove From Faves</Text>
+            </TouchableOpacity>
+          ) : (
+            <TouchableOpacity
+              onPress={() => {
+                this.props.createFave(this.props.data.id);
+              }}
+            >
+              <Text style={styles.button}>Add To Faves</Text>
+            </TouchableOpacity>
+          )}
         </View>
         <View style={{ marginTop: 22 }}>
           <Modal
