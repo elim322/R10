@@ -8,15 +8,20 @@ class FavesProvider extends Component {
       faveIds: []
     };
   }
-  getFavedSessionsIds() {
-    const getAllFaves = realm.objects("Faves").map(element => element.id);
-    this.setState({ faveIds: getAllFaves });
-  }
 
   componentDidMount() {
-    this.getFavedSessionsIds();
+    this.getFavedSessionIds();
   }
-
+  getFavedSessionIds = () => {
+    try {
+      this.setState({ faveIds: this.getFaves() });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  getFaves = () => {
+    return realm.objects("Faves").map(elem => elem.id);
+  };
   createFave(id) {
     console.log(realm);
     try {
@@ -24,33 +29,21 @@ class FavesProvider extends Component {
       realm.write(() => {
         realm.create("Faves", { id: id, faved_on: new Date() });
       });
-      this.queryAllFaves();
-      this.setState({ faveIds: favs });
+      this.quer();
     } catch (e) {
       console.log(e);
     }
   }
-
-  queryAllFaves() {
-    realm.write(() => {
-      let favs = realm.objects("Faves").map(element => element.id);
-      this.setState({ faveIds: favs });
-    });
-  }
-
   deleteFave(id) {
-    realm.write(() => {
-      realm.delete("Faves", { id: id }).then(() => {
-        let favs = realm.objects("Faves");
-        this.setState({ faveIds: favs });
+    try {
+      realm.write(() => {
+        const deleteId = realm.objects("Faves").filtered(`id ==$0`, id);
+        realm.delete(deleteId);
       });
-    });
-  }
-  deleteFave(id) {
-    realm.write(() => {
-      const deleteId = realm.objects("Faves").filtered(`id ==$0`, id);
-      realm.delete(deleteId);
-    });
+      this.queryAllFaves();
+    } catch (e) {
+      console.log(e);
+    }
   }
 
   render() {
@@ -58,7 +51,7 @@ class FavesProvider extends Component {
       <FavesContext.Provider
         value={{
           ...this.state,
-          queryAllFaves: this.queryAllFaves,
+          queryAllFaves: this.getFavedSessionIds,
           deleteFave: this.deleteFave,
           createFave: this.createFave
         }}

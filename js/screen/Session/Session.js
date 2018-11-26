@@ -25,6 +25,7 @@ class Session extends Component {
   }
 
   render() {
+    console.log(this.props.methods);
     return (
       <View>
         <Text>
@@ -58,7 +59,7 @@ class Session extends Component {
           {this.props.faveIds.includes(this.props.data.id) ? (
             <TouchableOpacity
               onPress={() => {
-                this.props.deleteFave(this.props.data.id);
+                this.props.methods.deleteFave(this.props.data.id);
               }}
             >
               <Text style={styles.button}>Remove From Faves</Text>
@@ -66,7 +67,7 @@ class Session extends Component {
           ) : (
             <TouchableOpacity
               onPress={() => {
-                this.props.createFave(this.props.data.id);
+                this.props.methods.createFave(this.props.data.id);
               }}
             >
               <Text style={styles.button}>Add To Faves</Text>
