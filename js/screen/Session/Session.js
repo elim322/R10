@@ -1,9 +1,8 @@
 import React from "react";
 import Ionicons from "react-native-vector-icons/Ionicons";
-import { View, Text, Button, Image } from "react-native";
+import { View, Text, Button, Image, TouchableHighlight } from "react-native";
 import moment from "moment";
 import styles from "./styles";
-import FavesContext from "../../context/FavesContext/FavesProvider";
 
 const Session = ({ data, createFave, deleteFave, faveIds, navigation }) => {
   return (
@@ -18,7 +17,7 @@ const Session = ({ data, createFave, deleteFave, faveIds, navigation }) => {
       <Text>Presented By:</Text>
       <TouchableHighlight
         onPress={() => {
-          navigation.navigate("Speaker", { id: item.id });
+          navigation.navigate("Speaker", { id: data.id });
         }}
         underlayColor="#e6e6e6"
         activeOpacity={0.7}
