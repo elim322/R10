@@ -56,8 +56,8 @@ const Faves = ({ faves, faveIds, navigation }) => {
   );
 };
 
-Faves.PropTypes = {
-  description: PropTypes.string,
+Faves.propTypes = {
+  description: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
   location: PropTypes.string.isRequired,
   startTime: PropTypes.string.isRequired,

@@ -24,7 +24,7 @@ const About = ({ data }) => {
         <Text style={styles.title}>Code of Conduct</Text>
 
         {data.map((item, index) => {
-          return <ConductAnimation data={item} />;
+          return <ConductAnimation data={item} key={index} />;
         })}
       </ScrollView>
     </View>
@@ -32,9 +32,9 @@ const About = ({ data }) => {
 };
 
 About.propTypes = {
-  id: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired
+  id: PropTypes.string,
+  title: PropTypes.string,
+  description: PropTypes.string
 };
 
 export default About;

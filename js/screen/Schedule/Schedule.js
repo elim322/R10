@@ -59,9 +59,10 @@ const Schedule = ({ sessions, navigation, faveIds }) => {
 };
 
 Schedule.propTypes = {
-  description: PropTypes.string,
   id: PropTypes.string.isRequired,
-  location: PropTypes.string.isRequired
+
+  location: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired
 };
 
 export default Schedule;

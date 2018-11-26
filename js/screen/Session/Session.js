@@ -156,12 +156,12 @@ class Session extends Component {
 
 Session.propTypes = {
   id: PropTypes.string.isRequired,
-  description: PropTypes.string,
+  description: PropTypes.string.isRequired,
   location: PropTypes.string.isRequired,
-  title: PropTypes.string,
-  url: PropTypes.string,
+  title: PropTypes.string.isRequired,
+  url: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  image: PropTypes.string,
-  bio: PropTypes.string
+  image: PropTypes.string.isRequired,
+  bio: PropTypes.string.isRequired
 };
 export default Session;
