@@ -43,6 +43,7 @@ class FavesContainer extends Component {
                   <Faves
                     faves={formatSessionData(data.allSessions)}
                     faveIds={faveIds}
+                    navigation={this.props.navigation}
                   />
                 );
               }

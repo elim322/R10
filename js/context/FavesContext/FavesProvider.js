@@ -25,6 +25,7 @@ class FavesProvider extends Component {
         realm.create("Faves", { id: id, faved_on: new Date() });
       });
       this.queryAllFaves();
+      this.setState({ faveIds: favs });
     } catch (e) {
       console.log(e);
     }

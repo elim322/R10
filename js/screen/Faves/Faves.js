@@ -10,7 +10,7 @@ import {
 import styles from "../Schedule/styles";
 import moment from "moment";
 
-const Faves = ({ faves, faveIds }) => {
+const Faves = ({ faves, faveIds, navigation }) => {
   return (
     <View style={styles.container}>
       <StatusBar barStyle="light-content" />
