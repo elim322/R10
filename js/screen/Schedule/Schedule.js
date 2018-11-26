@@ -5,12 +5,18 @@ import {
   Text,
   SectionList,
   StatusBar,
-  TouchableHighlight
+  TouchableHighlight,
+  Platform
 } from "react-native";
 import styles from "./styles";
 import moment from "moment";
 
-const Schedule = ({ sessions, navigation }) => {
+const iconName = Platform.select({
+  ios: "ios-heart",
+  android: "md-heart"
+});
+
+const Schedule = ({ sessions, navigation, faveIds }) => {
   return (
     <View style={styles.container}>
       <StatusBar barStyle="light-content" />
@@ -27,12 +33,14 @@ const Schedule = ({ sessions, navigation }) => {
               <View style={styles.content}>
                 <Text style={styles.title}>{item.title}</Text>
                 <Text style={styles.location}>{item.location}</Text>
-                <Ionicons
-                  style={styles.heart}
-                  name="ios-heart"
-                  size={"horizontal" ? 20 : 25}
-                  color="red"
-                />
+                {faveIds.includes(item.id) && (
+                  <Ionicons
+                    style={styles.heart}
+                    name={iconName}
+                    size={"horizontal" ? 20 : 25}
+                    color="red"
+                  />
+                )}
               </View>
             </View>
           </TouchableHighlight>
