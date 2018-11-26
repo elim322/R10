@@ -18,6 +18,8 @@ const ONE_SESSION = gql`
         name
         image
         id
+        url
+        bio
       }
     }
   }
@@ -44,7 +46,6 @@ class SessionContainer extends Component {
                     createFave={createFave}
                     deleteFave={deleteFave}
                     faveIds={faveIds}
-                    navigation={this.props.navigation}
                   />
                 )}
               </FavesContext.Consumer>

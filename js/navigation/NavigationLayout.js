@@ -4,7 +4,6 @@ import FavesScreen from "../screen/Faves";
 import ScheduleScreen from "../screen/Schedule";
 import MapScreen from "../screen/Map";
 import SessionScreen from "../screen/Session";
-import SpeakerScreen from "../screen/Speaker";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import { sharedNavigationOptions } from "./config";
 import {
@@ -15,8 +14,7 @@ import {
 const ScheduleStack = createStackNavigator(
   {
     Schedule: ScheduleScreen,
-    Session: SessionScreen,
-    Speaker: SpeakerScreen
+    Session: SessionScreen
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({
@@ -37,8 +35,7 @@ const MapStack = createStackNavigator(
 const FavesStack = createStackNavigator(
   {
     Faves: FavesScreen,
-    Session: SessionScreen,
-    Speaker: SpeakerScreen
+    Session: SessionScreen
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({
