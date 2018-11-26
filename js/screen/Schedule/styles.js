@@ -4,6 +4,11 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "flex-start"
   },
+  heart: {
+    position: "absolute",
+    right: 8,
+    top: 23
+  },
   header: {
     fontWeight: "bold",
     backgroundColor: "#e6e6e6",

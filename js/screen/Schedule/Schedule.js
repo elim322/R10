@@ -26,14 +26,13 @@ const Schedule = ({ sessions, navigation }) => {
             <View style={styles.separator}>
               <View style={styles.content}>
                 <Text style={styles.title}>{item.title}</Text>
-                <Text style={styles.location}>
-                  {item.location}
-                  <Ionicons
-                    name="ios-heart"
-                    size={"horizontal" ? 20 : 25}
-                    color="red"
-                  />
-                </Text>
+                <Text style={styles.location}>{item.location}</Text>
+                <Ionicons
+                  style={styles.heart}
+                  name="ios-heart"
+                  size={"horizontal" ? 20 : 25}
+                  color="red"
+                />
               </View>
             </View>
           </TouchableHighlight>
