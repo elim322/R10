@@ -3,6 +3,7 @@ import { View, Text, Image, FlatList } from "react-native";
 import styles from "./styles";
 import { ScrollView } from "react-native-gesture-handler";
 import ConductAnimation from "../../components/ConductAnimation/ConductAnimation";
+import PropTypes from "prop-types";
 
 const About = ({ data }) => {
   return (

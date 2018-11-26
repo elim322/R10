@@ -42,6 +42,25 @@ const styles = StyleSheet.create({
     color: "white",
     fontSize: 14.5,
     lineHeight: 15 * 1.5
+  },
+  modalContainer: {
+    flex: 1,
+    padding: 10,
+    backgroundColor: "black"
+  },
+  modalContent: {
+    marginTop: 50
+  },
+  modalIcon: {
+    fontSize: 24,
+    position: "absolute",
+    left: 0,
+    color: "black"
+  },
+  modalTitle: {
+    color: "white",
+    fontWeight: "bold",
+    alignSelf: "center"
   }
 });
 

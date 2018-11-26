@@ -13,6 +13,7 @@ import {
 import moment from "moment";
 import styles from "./styles";
 import LinearGradient from "react-native-linear-gradient";
+import PropTypes from "prop-types";
 
 class Session extends Component {
   constructor(props) {
@@ -30,6 +31,11 @@ class Session extends Component {
     const iconName = Platform.select({
       ios: "ios-heart",
       android: "md-heart"
+    });
+
+    const modalIconName = Platform.select({
+      ios: "ios-close",
+      android: "md-close"
     });
 
     return (
@@ -98,7 +104,7 @@ class Session extends Component {
             </TouchableOpacity>
           )}
         </View>
-        <View style={{ marginTop: 22 }}>
+        <View style={styles.modalContainer}>
           <Modal
             animationType="slide"
             transparent={false}
@@ -107,7 +113,17 @@ class Session extends Component {
               Alert.alert("Modal has been closed.");
             }}
           >
-            <View style={{ marginTop: 22 }}>
+            <TouchableHighlight
+              onPress={() => this.setState({ modalVisible: false })}
+            >
+              <Ionicons
+                style={styles.modalIcon}
+                color={"#fff"}
+                name={modalIconName}
+              />
+            </TouchableHighlight>
+            <Text style={styles.modalTitle}>About the Speaker</Text>
+            <View style={styles.modalContent}>
               <View>
                 <Image source={{ uri: this.props.data.speaker.image }} />
                 <Text>{this.props.data.speaker.name}</Text>
@@ -122,4 +138,5 @@ class Session extends Component {
   }
 }
 
+Session.propTypes = {};
 export default Session;

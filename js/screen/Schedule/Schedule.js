@@ -10,6 +10,7 @@ import {
 } from "react-native";
 import styles from "./styles";
 import moment from "moment";
+import PropTypes from "prop-types";
 
 const iconName = Platform.select({
   ios: "ios-heart",
