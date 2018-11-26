@@ -26,7 +26,7 @@ class AboutContainer extends Component {
           if (loading) return <ActivityIndicator />;
           if (error) return `${error}`;
           if (data) {
-            return <About data={data} />;
+            return <About data={data.allConducts} />;
           }
         }}
       </Query>

@@ -1,6 +1,8 @@
 import React from "react";
 import { View, Text, Image, FlatList } from "react-native";
 import styles from "./styles";
+import { ScrollView } from "react-native-gesture-handler";
+import ConductAnimation from "../../components/ConductAnimation/ConductAnimation";
 
 const About = ({ data }) => {
   return (
@@ -19,9 +21,10 @@ const About = ({ data }) => {
           Vancouver BC.
         </Text>
         <Text style={styles.title}>Code of Conduct</Text>
-        {data.conducts.map((conduct, index) => (
-          <ConductAnimation conduct={conduct} key={index} />
-        ))}
+
+        {data.map((item, index) => {
+          return <ConductAnimation data={item} />;
+        })}
       </ScrollView>
     </View>
   );
