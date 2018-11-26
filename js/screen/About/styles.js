@@ -1,4 +1,14 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, Platform } from "react-native";
+const montserratLight = Platform.select({
+  ios: "Montserrat-light",
+  android: "Montserrat-Light"
+});
+
+const montserrat = Platform.select({
+  ios: "Montserrat",
+  android: "Montserrat-Regular"
+});
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -15,10 +25,12 @@ const styles = StyleSheet.create({
     fontSize: 30,
     marginTop: 10,
     marginBottom: 10,
-    fontWeight: "bold"
+    fontWeight: "bold",
+    fontFamily: montserrat
   },
   body: {
-    fontSize: 20
+    fontSize: 20,
+    fontFamily: montserratLight
   }
 });
 export default styles;

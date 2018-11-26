@@ -1,10 +1,20 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, Platform } from "react-native";
+const montserratLight = Platform.select({
+  ios: "Montserrat-light",
+  android: "Montserrat-Light"
+});
+
+const montserrat = Platform.select({
+  ios: "Montserrat",
+  android: "Montserrat-Regular"
+});
 const styles = StyleSheet.create({
   container: {
     padding: 10
   },
   location: {
-    color: "#999"
+    color: "#999",
+    fontFamily: montserratLight
   },
   heart: {
     position: "absolute",
@@ -13,7 +23,8 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 27,
-    paddingTop: 10
+    paddingTop: 10,
+    fontFamily: montserrat
   },
   startTime: {
     color: "#cf392a",
@@ -21,7 +32,8 @@ const styles = StyleSheet.create({
   },
   description: {
     fontSize: 16,
-    paddingTop: 10
+    paddingTop: 10,
+    fontFamily: montserratLight
   },
   speaker: {
     height: 50,
@@ -29,7 +41,8 @@ const styles = StyleSheet.create({
     borderRadius: 25
   },
   presented: {
-    paddingTop: 10
+    paddingTop: 10,
+    fontFamily: montserrat
   },
   button: {
     marginTop: 10,
@@ -41,7 +54,8 @@ const styles = StyleSheet.create({
     textAlign: "center",
     color: "white",
     fontSize: 14.5,
-    lineHeight: 15 * 1.5
+    lineHeight: 15 * 1.5,
+    fontFamily: montserrat
   },
   modalContainer: {
     flex: 1,
@@ -59,7 +73,8 @@ const styles = StyleSheet.create({
   modalTitle: {
     color: "white",
     fontWeight: "bold",
-    alignSelf: "center"
+    alignSelf: "center",
+    fontFamily: montserrat
   }
 });
 

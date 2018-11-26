@@ -1,5 +1,4 @@
 import { createStackNavigator, createAppContainer } from "react-navigation";
-import AboutStack from "./NavigationLayout";
 import NavigationLayout from "./NavigationLayout";
 
 const AppNavigator = createStackNavigator(
