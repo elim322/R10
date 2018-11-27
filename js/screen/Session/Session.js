@@ -15,12 +15,16 @@ const Session = ({ navigation, data, faveIds }) => {
   return (
     <View style={styles.container}>
       <Text style={styles.location}>{data.location}</Text>
-      <Ionicons
-        style={styles.heart}
-        name={iconName}
-        size={"horizontal" ? 20 : 25}
-        color="red"
-      />
+      {faveIds.includes(data.id) ? (
+        <Ionicons
+          style={styles.heart}
+          name={iconName}
+          size={"horizontal" ? 20 : 25}
+          color="red"
+        />
+      ) : (
+        <Text />
+      )}
       <Text style={styles.title}>{data.title}</Text>
       <Text style={styles.startTime}>
         {moment(data.startTime).format("LT")}
