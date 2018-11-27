@@ -31,10 +31,10 @@ const About = ({ data }) => {
   );
 };
 
-About.propTypes = {
-  id: PropTypes.string,
-  title: PropTypes.string,
-  description: PropTypes.string
-};
+// About.propTypes = {
+//   id: PropTypes.string,
+//   title: PropTypes.string,
+//   description: PropTypes.string
+// };
 
 export default About;

@@ -23,10 +23,6 @@ class Session extends Component {
     };
   }
 
-  setModalVisible(visible) {
-    this.setState({ modalVisible: visible });
-  }
-
   render() {
     const iconName = Platform.select({
       ios: "ios-heart",
@@ -55,7 +51,7 @@ class Session extends Component {
         <Text style={styles.presented}>Presented By:</Text>
         <TouchableHighlight
           onPress={() => {
-            this.setModalVisible(!this.state.modalVisible);
+            this.setModalVisible();
           }}
           underlayColor="#e6e6e6"
           activeOpacity={0.7}
@@ -104,58 +100,14 @@ class Session extends Component {
             </TouchableOpacity>
           )}
         </View>
-        <View style={styles.modalContainer}>
-          <Modal
-            animationType="slide"
-            transparent={false}
-            visible={this.state.modalVisible}
-            onRequestClose={() => {
-              Alert.alert("Modal has been closed.");
-            }}
-          >
-            <TouchableOpacity
-              onPress={() => this.setModalVisible(!this.state.modalVisible)}
-            >
-              <Ionicons
-                style={styles.modalIcon}
-                color={"#fff"}
-                name={modalIconName}
-              />
-            </TouchableOpacity>
-            <Text style={styles.modalTitle}>About the Speaker</Text>
-            <View style={styles.modalContent}>
-              <View>
-                <Image source={{ uri: this.props.data.speaker.image }} />
-                <Text>{this.props.data.speaker.name}</Text>
-                <Text>{this.props.data.speaker.bio}</Text>
-                <TouchableOpacity
-                  onPress={() => {
-                    Linking.openURL(this.props.data.speaker.url);
-                  }}
-                >
-                  <LinearGradient
-                    colors={["#9963ea", "#8797D6"]}
-                    start={{ x: 0.0, y: 0.0 }}
-                    end={{ x: 1.0, y: 1.0 }}
-                    style={styles.button}
-                  >
-                    <Text style={styles.buttonTitle}>
-                      Read More on Wikipedia
-                    </Text>
-                  </LinearGradient>
-                </TouchableOpacity>
-              </View>
-            </View>
-          </Modal>
-        </View>
       </View>
     );
   }
 }
 
-Session.propTypes = {
-  data: PropTypes.string.isRequired,
-  methods: PropTypes.object.isRequired,
-  faveIds: PropTypes.id.isRequired
-};
+// Session.propTypes = {
+//   data: PropTypes.string.isRequired,
+//   methods: PropTypes.object.isRequired,
+//   faveIds: PropTypes.id.isRequired
+// };
 export default Session;

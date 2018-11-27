@@ -56,12 +56,12 @@ const Faves = ({ faves, faveIds, navigation }) => {
   );
 };
 
-Faves.propTypes = {
-  description: PropTypes.string.isRequired,
-  id: PropTypes.string.isRequired,
-  location: PropTypes.string.isRequired,
-  startTime: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired
-};
+// Faves.propTypes = {
+//   description: PropTypes.string.isRequired,
+//   id: PropTypes.string.isRequired,
+//   location: PropTypes.string.isRequired,
+//   startTime: PropTypes.string.isRequired,
+//   title: PropTypes.string.isRequired
+// };
 
 export default Faves;
