@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import {
   View,
@@ -8,15 +8,14 @@ import {
   TouchableOpacity,
   Linking
 } from "react-native";
-
 import styles from "./styles";
 import LinearGradient from "react-native-linear-gradient";
 
-class Speaker extends component {
+class Speaker extends Component {
   constructor() {
     super();
     this.state = {
-      modalVisible: false
+      modalVisible: true
     };
   }
   setModalVisible() {
@@ -40,12 +39,12 @@ class Speaker extends component {
           <Text style={styles.modalTitle}>About the Speaker</Text>
           <View style={styles.modalContent}>
             <View>
-              <Image source={{ uri: this.props.data.speaker.image }} />
-              <Text>{this.props.data.speaker.name}</Text>
-              <Text>{this.props.data.speaker.bio}</Text>
+              <Image source={{ uri: this.props.speaker.image }} />
+              <Text>{this.props.speaker.name}</Text>
+              <Text>{this.props.speaker.bio}</Text>
               <TouchableOpacity
                 onPress={() => {
-                  Linking.openURL(this.props.data.speaker.url);
+                  Linking.openURL(this.props.speaker.url);
                 }}
               >
                 <LinearGradient
@@ -64,3 +63,5 @@ class Speaker extends component {
     );
   }
 }
+
+export default Speaker;

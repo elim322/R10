@@ -5,7 +5,7 @@ import { Query } from "react-apollo";
 import { ActivityIndicator } from "react-native";
 import FavesContext from "../../context/FavesContext/FavesProvider";
 
-const ONE_SESSION = gql`
+const GET_SESSIONS = gql`
   query Session($id: ID!) {
     Session(id: $id) {
       startTime
@@ -30,7 +30,7 @@ class SessionContainer extends Component {
   render() {
     return (
       <Query
-        query={ONE_SESSION}
+        query={GET_SESSIONS}
         variables={{ id: this.props.navigation.getParam("id") }}
       >
         {({ loading, error, data }) => {
@@ -44,6 +44,7 @@ class SessionContainer extends Component {
                     data={data.Session}
                     methods={values}
                     faveIds={values.faveIds}
+                    navigation={this.props.navigation}
                   />
                 )}
               </FavesContext.Consumer>
