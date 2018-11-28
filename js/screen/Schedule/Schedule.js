@@ -38,7 +38,7 @@ const Schedule = ({ sessions, navigation, faveIds }) => {
                   <Ionicons
                     style={styles.heart}
                     name={iconName}
-                    size={"horizontal" ? 20 : 25}
+                    size={"horizontal" ? 15 : 15}
                     color="red"
                   />
                 )}

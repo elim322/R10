@@ -83,7 +83,7 @@ export default createBottomTabNavigator(
         return (
           <Ionicons
             name={iconName}
-            size={horizontal ? 20 : 25}
+            size={horizontal ? 25 : 25}
             color={tintColor}
           />
         );

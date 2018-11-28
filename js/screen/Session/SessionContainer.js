@@ -25,7 +25,8 @@ const GET_SESSIONS = gql`
 `;
 class SessionContainer extends Component {
   static navigationOptions = {
-    title: "Session"
+    title: "Session",
+    headerTintColor: "white"
   };
   render() {
     return (

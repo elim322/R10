@@ -11,7 +11,7 @@ const iconName = Platform.select({
   android: "md-heart"
 });
 
-const Session = ({ navigation, data, faveIds }) => {
+const Session = ({ navigation, data, faveIds, methods }) => {
   return (
     <View style={styles.container}>
       <Text style={styles.location}>{data.location}</Text>
@@ -19,7 +19,7 @@ const Session = ({ navigation, data, faveIds }) => {
         <Ionicons
           style={styles.heart}
           name={iconName}
-          size={"horizontal" ? 20 : 25}
+          size={"horizontal" ? 15 : 15}
           color="red"
         />
       ) : (
@@ -31,16 +31,17 @@ const Session = ({ navigation, data, faveIds }) => {
       </Text>
       <Text style={styles.description}>{data.description}</Text>
       <Text style={styles.presented}>Presented By:</Text>
-      <Image style={styles.speaker} source={{ uri: data.speaker.image }} />
-      <React.Fragment>
-        <TouchableOpacity
-          onPress={() => {
-            navigation.navigate("Speaker", { speaker: data.speaker });
-          }}
-        >
+      <TouchableOpacity
+        onPress={() => {
+          navigation.navigate("Speaker", { speaker: data.speaker });
+        }}
+      >
+        <View style={styles.profile}>
+          <Image style={styles.speaker} source={{ uri: data.speaker.image }} />
           <Text style={styles.speakerName}>{data.speaker.name}</Text>
-        </TouchableOpacity>
-      </React.Fragment>
+        </View>
+      </TouchableOpacity>
+      <View style={styles.separator} />
       <View>
         {faveIds.includes(data.id) ? (
           <TouchableOpacity
@@ -78,9 +79,10 @@ const Session = ({ navigation, data, faveIds }) => {
   );
 };
 
-// Session.propTypes = {
-//   data: PropTypes.string.isRequired,
-//   methods: PropTypes.object.isRequired,
-//   faveIds: PropTypes.id.isRequired
-// };
+Session.propTypes = {
+  data: PropTypes.object.isRequired,
+  methods: PropTypes.object.isRequired,
+  faveIds: PropTypes.array.isRequired,
+  navigation: PropTypes.object.isRequired
+};
 export default Session;

@@ -19,14 +19,14 @@ class FavesProvider extends Component {
   getFaves = () => {
     return realm.objects("Faves").map(elem => elem.id);
   };
-  createFave(id) {
-    realm.write(() => {
+  async createFave(id) {
+    await realm.write(() => {
       realm.create("Faves", { id: id, faved_on: new Date() });
     });
     this.queryAllFaves();
   }
-  deleteFave(id) {
-    realm.write(() => {
+  async deleteFave(id) {
+    await realm.write(() => {
       const deleteId = realm.objects("Faves").filtered(`id ==$0`, id);
       realm.delete(deleteId);
     });
