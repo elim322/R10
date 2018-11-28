@@ -29,7 +29,12 @@ export const sharedNavigationOptions = navigation => ({
     if (Platform.OS === "android") {
       return (
         <TouchableHighlight onPress={() => navigation.toggleDrawer()}>
-          <Ionicons color="white" name="md-menu" size={15} />
+          <Ionicons
+            color="white"
+            name="md-menu"
+            size={25}
+            style={{ padding: 15 }}
+          />
         </TouchableHighlight>
       );
     } else {

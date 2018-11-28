@@ -77,9 +77,14 @@ export default createDrawerNavigator(
           iconName = `md-heart`;
         }
         return (
-          <View>
-            <Ionicons name={iconName} size={25} color={tintColor} />
-            <Text>{routeName}</Text>
+          <View style={{ flexDirection: "row", marginVertical: 20 }}>
+            <Ionicons
+              name={iconName}
+              size={25}
+              color={tintColor}
+              style={{ paddingLeft: 15 }}
+            />
+            <Text style={{ paddingLeft: 15 }}>{routeName}</Text>
           </View>
         );
       }
