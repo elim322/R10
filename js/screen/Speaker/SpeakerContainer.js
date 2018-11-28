@@ -6,13 +6,8 @@ class SessionContainer extends Component {
     title: "Speaker"
   };
   render() {
-    console.log(this.props.navigation.getParam("speaker"));
-    return (
-      <Speaker
-        speaker={this.props.navigation.getParam("speaker")}
-        navigation={this.props.navigation}
-      />
-    );
+    const speaker = this.props.navigation.getParam("speaker");
+    return <Speaker speaker={speaker} navigation={this.props.navigation} />;
   }
 }
 
